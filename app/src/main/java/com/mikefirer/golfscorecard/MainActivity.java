@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         scoreRecyclerView.setAdapter(adapter);
         scoreRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        scoreRecyclerView.setHasFixedSize(true);
+
         for (int i = 0; i < 18; i++) {
             String holeNumberKey = KEY_HOLE_NUMBER + (i + 1);
             mScores[i] = mSharedPrefs.getInt(holeNumberKey, 0);

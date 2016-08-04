@@ -9,9 +9,37 @@ import android.widget.TextView;
 
 public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHolder> {
     private Integer[] mScores;
+    private View.OnClickListener mPlusOnClickListener;
+    private View.OnClickListener mMinusOnClickListener;
 
     public ScoreAdapter(Integer[] scores) {
         mScores = scores;
+
+        mPlusOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer position = (Integer) view.getTag();
+                mScores[position] += 1;
+                ViewGroup row = (ViewGroup) view.getParent();
+                TextView scoreValueTextView = (TextView) row.getChildAt(1);
+                scoreValueTextView.setText(mScores[position] + "");
+            }
+        };
+
+        mMinusOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer position = (Integer) view.getTag();
+                if (mScores[position] > 0) {
+                    mScores[position] -= 1;
+                    ViewGroup row = (ViewGroup) view.getParent();
+                    TextView scoreValueTextView = (TextView) row.getChildAt(1);
+                    scoreValueTextView.setText(mScores[position] + "");
+                }
+            }
+        };
+
+
     }
 
     @Override
@@ -32,6 +60,9 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
         holder.mMinusButton.setTag(position);
         holder.mScoreLabel.setText(String.format("Hole %s:", holeNumber));
         holder.mScoreValue.setText(score);
+
+        holder.mPlusButton.setOnClickListener(mPlusOnClickListener);
+        holder.mMinusButton.setOnClickListener(mMinusOnClickListener);
     }
 
     @Override
@@ -54,26 +85,6 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
             mScoreValue = (TextView) itemView.findViewById(R.id.scoreValue);
             mPlusButton = (Button) itemView.findViewById(R.id.plusButton);
             mMinusButton = (Button) itemView.findViewById(R.id.minusButton);
-
-            mPlusButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Integer position = (Integer) view.getTag();
-                    mScores[position] += 1;
-                    mScoreValue.setText(mScores[position] + "");
-                }
-            });
-
-            mMinusButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Integer position = (Integer) view.getTag();
-                    if (mScores[position] > 0) {
-                        mScores[position] -= 1;
-                        mScoreValue.setText(mScores[position] + "");
-                    }
-                }
-            });
         }
     }
 }
