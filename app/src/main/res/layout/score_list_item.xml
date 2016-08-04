@@ -1,57 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal"
                 tools:background="#247eaf"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
     >
 
     <TextView
-        android:layout_width="120sp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="3"
         android:layout_height="wrap_content"
         android:id="@+id/scoreLabel"
-        android:layout_alignParentStart="true"
         android:textSize="30sp"
         android:textColor="#ffffff"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
         tools:text="Hole 18:"
-        android:text="Hole #:"/>
+        />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="3"
         android:layout_height="wrap_content"
         android:id="@+id/scoreValue"
-        android:layout_alignBottom="@+id/scoreLabel"
-        android:layout_toEndOf="@+id/scoreLabel"
         android:textSize="30sp"
         android:textColor="#ffffff"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
         tools:text="100"
         />
 
     <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="+"
         android:id="@+id/plusButton"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
         android:textSize="25sp"
         />
 
     <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="-"
         android:id="@+id/minusButton"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/plusButton"
         android:textSize="25sp"
         />
 
-</RelativeLayout>
+</LinearLayout>
